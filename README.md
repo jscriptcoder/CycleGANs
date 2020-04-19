@@ -1,6 +1,6 @@
 # Cycle Generative Adversarial Networks
 
-This project is based on the paper: [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593).
+This project is based on the paper: [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593), and part of [Udacity Deep Learning Nanodegree program](https://www.udacity.com/course/deep-learning-nanodegree--nd101)
 
 The goal is to train generators that learn to transform an image from domain X into an image that looks like it came from domain Y (and vice versa).
 
