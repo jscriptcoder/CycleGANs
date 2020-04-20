@@ -1,4 +1,4 @@
-# Cycle Generative Adversarial Networks
+# Cycle-Consistent Adversarial Networks
 
 WORK IN PROGRESS!!
 
