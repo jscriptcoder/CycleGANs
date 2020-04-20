@@ -228,3 +228,24 @@ Say you have a fake, generated image, `x_hat`, and a real image, `y`. You can ge
 <p align="center"><img src="assets/reconstruction_error.png" width="50%" /></p>
 
 The total generator loss will be the sum of the generator losses and the forward and backward cycle consistency losses.
+
+## Training a CycleGAN
+
+When a CycleGAN trains, and sees one batch of real images from set **X** and **Y**, it trains by performing the following steps:
+
+**Training the Discriminators**
+
+1. Compute the discriminator **DX** loss on real images
+2. Generate fake images that look like domain **X** based on real images in domain **Y**
+3. Compute the fake loss for **DX**
+4. Compute the total loss and perform backpropagation and **DX** optimization
+5. Repeat steps 1-4 only with **DY** and your domains switched!
+
+**Training the Generators**
+
+1. Generate fake images that look like domain **X** based on real images in domain **Y**
+2. Compute the generator loss based on how **DX** responds to fake **X**
+3. Generate reconstructed **Y** images based on the fake **X** images generated in step 1
+4. Compute the cycle consistency loss by comparing the reconstructions with real **Y** images
+5. Repeat steps 1-4 only swapping domains
+6. Add up all the generator and reconstruction losses and perform backpropagation + optimization
