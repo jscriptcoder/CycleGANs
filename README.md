@@ -42,4 +42,22 @@ The motivation for using residual blocks is as follows: very deep neural network
 
 One solution to this problem is to use **Resnet blocks** that allow us to learn so-called residual functions as they are applied to layer inputs. You can read more about this proposed architecture in the paper, [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385) by Kaiming He et. al, and the below image is from that paper.
 
-<img src="assets/resnet_block.png" />
+<p align="center"><img src="assets/resnet_block.png" width="50%" /></p>
+
+#### Residual Functions
+
+Usually, when we create a deep learning model, the model (several layers with activations applied) is responsible for learning a mapping `M` from an input `x` to an output `y`
+
+`M(x) = y` 
+
+Instead of learning a direct mapping from `x` to `y`, we can instead define a residual function
+
+`F(x) = M(x) - x`
+
+This looks at the difference between a mapping applied to `x` and the original input, `x`. `F(x)` is, typically, two convolutional layers + normalization layer and a ReLu in between. These convolutional layers should have the same number of inputs as outputs. This mapping can then be written as the following; a function of the residual function and the input `x`. The addition step creates a kind of loop that connects the input `x` to the output `y`:
+
+`M(x) = F(x) + x`  or `y = F(x) + x`
+
+#### Optimizing a Residual Function
+
+The idea is that it is easier to optimize this residual function `F(x)` than it is to optimize the original mapping `M(x)`. Consider an example; what if we want `y = x`? From our first direct mapping equation, `M(x) = y` , we could set `M(x) = x` but it is easier to solve the residual equation `F(x) = 0`, which, when plugged in to `y = F(x) + x`, yields `y = x`.
