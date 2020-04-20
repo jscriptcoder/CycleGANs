@@ -191,3 +191,7 @@ class ResidualBlock(nn.Module):
         
         return out
 ```
+
+### Discriminator and Generator Losses
+
+Computing the discriminator and the generator losses are key to getting a CycleGAN to train.
