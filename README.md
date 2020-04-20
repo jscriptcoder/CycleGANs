@@ -46,11 +46,11 @@ One solution to this problem is to use **Resnet blocks** that allow us to learn 
 
 #### Residual Functions
 
-Usually, when we create a deep learning model, the model (several layers with activations applied) is responsible for learning a mapping `M` from an input `x` to an output `y`
+Usually, when we create a deep learning model, the model (several layers with activations applied) is responsible for learning a mapping `M` from an input `x` to an output `y`:
 
 `M(x) = y` 
 
-Instead of learning a direct mapping from `x` to `y`, we can instead define a residual function
+Instead of learning a direct mapping from `x` to `y`, we can instead define a residual function:
 
 `F(x) = M(x) - x`
 
