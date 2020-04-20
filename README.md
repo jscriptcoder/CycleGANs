@@ -225,6 +225,6 @@ In addition to the adversarial losses, the generator loss terms will also includ
 
 Say you have a fake, generated image, `x_hat`, and a real image, `y`. You can get a reconstructed `y_hat` by applying `G_XtoY(x_hat)` = `y_hat` and then check to see if this reconstruction `y_hat` and the orginal image `y` match. For this, we recommed calculating the L1 loss, which is an absolute difference, between reconstructed and real images. You may also choose to multiply this loss by some weight value lambda_weight to convey its importance.
 
-The total generator loss will be the sum of the generator losses and the forward and backward cycle consistency losses.
-
 <p align="center"><img src="assets/reconstruction_error.png" width="50%" /></p>
+
+The total generator loss will be the sum of the generator losses and the forward and backward cycle consistency losses.
