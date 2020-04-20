@@ -195,3 +195,36 @@ class ResidualBlock(nn.Module):
 ### Discriminator and Generator Losses
 
 Computing the discriminator and the generator losses are key to getting a CycleGAN to train.
+
+<img src="assets/CycleGAN_loss.png" width="100%" />
+
+The CycleGAN contains two mapping functions: **G:X->Y** and **F:Y->X**, and associated adversarial discriminators **DY** and **DX**. (a) **DY**  encourages **G** to translate **X** into outputs indistinguishable from domain **Y**, and vice versa for **DX** and **F**.
+
+To further regularize the mappings, we introduce two cycle consistency losses that capture the intuition that if we translate from one domain to the other and back again we should arrive at where we started. (b) Forward cycle-consistency loss and (c) backward cycle-consistency loss.
+
+### Least Squares GANs
+
+We've seen that regular GANs treat the discriminator as a classifier with the sigmoid cross entropy loss function. However, this loss function may lead to the vanishing gradients problem during the learning process. To overcome such a problem, we'll use a least squares loss function for the discriminator. This structure is also referred to as a least squares GAN or LSGAN, and you can read the original [paper on LSGANs](https://arxiv.org/abs/1611.04076). The authors show that LSGANs are able to generate higher quality images than regular GANs and that this loss type is a bit more stable during training.
+
+#### Discriminator Losses
+
+The discriminator losses will be mean squared errors between the output of the discriminator, given an image, and the target value, 0 or 1, depending on whether it should classify that image as fake or real. For example, for a real image, `x`, we can train **DX** by looking at how close it is to recognizing and image `x` as real using the mean squared error:
+
+```python
+out_x = D_X(x)
+real_err = torch.mean((out_x-1)**2)
+```
+
+#### Generator Losses
+
+Calculating the generator losses will look somewhat similar to calculating the discriminator loss; there will still be steps in which you generate fake images that look like they belong to the set of **X** images but are based on real images in set **Y**, and vice versa. You'll compute the "real loss" on those generated images by looking at the output of the discriminator as it's applied to these fake images; this time, your generator aims to make the discriminator classify these fake images as real images.
+
+#### Cycle Consistency Loss
+
+In addition to the adversarial losses, the generator loss terms will also include the cycle consistency loss. This loss is a measure of how good a reconstructed image is, when compared to an original image.
+
+Say you have a fake, generated image, `x_hat`, and a real image, `y`. You can get a reconstructed `y_hat` by applying `G_XtoY(x_hat)` = `y_hat` and then check to see if this reconstruction `y_hat` and the orginal image `y` match. For this, we recommed calculating the L1 loss, which is an absolute difference, between reconstructed and real images. You may also choose to multiply this loss by some weight value lambda_weight to convey its importance.
+
+The total generator loss will be the sum of the generator losses and the forward and backward cycle consistency losses.
+
+<p align="center"><img src="assets/reconstruction_error.png" width="50%" /></p>
