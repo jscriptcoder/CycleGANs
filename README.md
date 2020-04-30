@@ -250,7 +250,7 @@ When a CycleGAN trains, and sees one batch of real images from set **X** and **Y
 5. Repeat steps 1-4 only swapping domains
 6. Add up all the generator and reconstruction losses and perform backpropagation + optimization
 
-## Monet paintings <=> Real photos
+## Monet paintings ⇄ Real photos
 
 <p align="center">
   <img src="assets/monets1.png" width=80% />
