@@ -249,3 +249,11 @@ When a CycleGAN trains, and sees one batch of real images from set **X** and **Y
 4. Compute the cycle consistency loss by comparing the reconstructions with real **Y** images
 5. Repeat steps 1-4 only swapping domains
 6. Add up all the generator and reconstruction losses and perform backpropagation + optimization
+
+## Monet paintings <=> Real photos
+
+<p align="center">
+  <img src="assets/monets1.png" width=80% />
+  <img src="assets/monets2.png" width=80% />
+  <img src="assets/monets3.png" width=80% />
+</p>
