@@ -1,6 +1,6 @@
 # Cycle-Consistent Adversarial Networks
 
-WORK IN PROGRESS!!
+See [**Jupyer notebook**](https://nbviewer.jupyter.org/github/jscriptcoder/CycleGANs/blob/master/CycleGAN_monet2photo.ipynb) for details about this project, hyperparameters and algorithms used.
 
 This project is based on the paper: [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://junyanz.github.io/CycleGAN), and part of [Udacity Deep Learning Nanodegree program](https://www.udacity.com/course/deep-learning-nanodegree--nd101)
 
